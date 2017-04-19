@@ -171,13 +171,11 @@ public class FindRestaurantsActivity extends AppCompatActivity {
                 latitude = location.getLatitude();
                 longitude = location.getLongitude();
             } else {
-                latitude = 25.133308;
-                longitude = 55.425142;
             }
 
             // Making a request to url and getting response
             String jsonStr = sh.makeServiceCall("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," + longitude +
-                    "&radius=5000&types=restaurant&sensor=true&key=AIzaSyCF3zT7tmBV4Tq2UyZNNwIb1c7E07XAVEQ");
+                    "&radius=5000&types=restaurant&sensor=true&key=YOUR_KEY");
 
             Log.e("Q", "Q: Response from url: " + jsonStr);
 
@@ -195,68 +193,6 @@ public class FindRestaurantsActivity extends AppCompatActivity {
                         restaurant.put("longitude",
                                 String.valueOf(obj.getJSONObject("geometry").getJSONObject("location").getDouble("lng")));
                         restaurant.put("location", "(" + restaurant.get("latitude") + ", " + restaurant.get("longitude") + ")");
-                        if (restaurant.get("name") == "Subway") {
-                            restaurant.put("rating", "3");
-
-                        } else if (restaurant.get("name") == "Catering Service Gardens Restaurant") {
-                            restaurant.put("rating", "4");
-
-                        } else if (restaurant.get("name") == "Pizza Hut") {
-                            restaurant.put("rating", "2");
-
-                        } else if (restaurant.get("name") == "Al Shorafaa Restaurant") {
-                            restaurant.put("rating", "4");
-
-                        } else if (restaurant.get("name") == "BritBalti Restaurant") {
-                            restaurant.put("rating", "4");
-
-                        } else if (restaurant.get("name") == "Bombay Chowpatty") {
-                            restaurant.put("rating", "2");
-
-                        } else if (restaurant.get("name") == "Papa John's") {
-                            restaurant.put("rating", "2");
-
-                        } else if (restaurant.get("name") == "Mirchi Academic City") {
-                            restaurant.put("rating", "3");
-
-                        } else if (restaurant.get("name") == "Filli Cafe") {
-                            restaurant.put("rating", "3");
-
-                        } else if (restaurant.get("name") == "SHAHY BURGER") {
-                            restaurant.put("rating", "2");
-
-                        } else if (restaurant.get("name") == "Taste Kitchen") {
-                            restaurant.put("rating", "4");
-
-                        } else if (restaurant.get("name") == "Oregano Presto") {
-                            restaurant.put("rating", "4");
-
-                        } else if (restaurant.get("name") == "Caravella catering") {
-                            restaurant.put("rating", "3");
-
-                        } else if (restaurant.get("name") == "MASSAAD BBQ farm to table") {
-                            restaurant.put("rating", "3");
-
-                        } else if (restaurant.get("name") == "On The Wood") {
-                            restaurant.put("rating", "4");
-
-                        } else if (restaurant.get("name") == "Pak Jinnah Sweets") {
-                            restaurant.put("rating", "2");
-
-                        } else if (restaurant.get("name") == "Khan Alkhalili Restaurant") {
-                            restaurant.put("rating", "3");
-
-                        } else if (restaurant.get("name") == "Canto Restaurant FZE") {
-                            restaurant.put("rating", "4");
-
-                        } else if (restaurant.get("name")== "MazMez Restaurant - Syrian Bite") {
-                            restaurant.put("rating", "3");
-
-                        } else if (restaurant.get("name") == "Punjab Palace Restaurant") {
-                            restaurant.put("rating", "4");
-
-                        }
-
                         restaurantsList.add(restaurant);
                     }
                 } catch (final JSONException e) {
